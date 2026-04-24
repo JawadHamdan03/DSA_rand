@@ -23,25 +23,37 @@ def add_node_BST(root, node):
         else :
             add_node_BST(root.right,node)
 
-def inorder_tree_traversal(root):
-    if not root:
-        return
-    inorder_tree_traversal(root.left)
-    print(root.val)
-    inorder_tree_traversal(root.right)
-
-def create_BST(root:Node , nodes:List):
+def create_BST(root , nodes):
     for node in nodes:
         add_node_BST(root,node)
 
+def DFS_recursive(root):
+    if not root:
+        return
+    DFS_recursive(root.left)
+    print(root.val)
+    DFS_recursive(root.right)
 
+def DFS_itrative(root):
+    if not root:
+        return
+    stack =[root]
+    values:List =[]
+    while stack:
+        curr = stack.pop()
+        values.append(curr.val)
+        if curr.right:
+            stack.append(curr.right)
+        if curr.left:
+            stack.append(curr.left)
+    print(*values)
 
 
 root= Node(5)
-nodes=[Node(6),Node(3),Node(4),Node(8)]
+nodes=[Node(6),Node(3),Node(4),Node(8),Node(2)]
 create_BST(root,nodes)
-inorder_tree_traversal(root)
-
+DFS_recursive(root)
+DFS_itrative(root)
 
 
 
