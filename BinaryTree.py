@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Node :
     def __init__(self,val: int, right:Node=None, left:Node = None):
         self.val= val
@@ -27,16 +30,16 @@ def inorder_tree_traversal(root):
     print(root.val)
     inorder_tree_traversal(root.right)
 
-root= Node(5)
-a= Node(6)
-b= Node(3)
-c= Node(4)
-d= Node(8)
+def create_BST(root:Node , nodes:List):
+    for node in nodes:
+        add_node_BST(root,node)
 
-add_node_BST(root,a)
-add_node_BST(root,b)
-add_node_BST(root,c)
-add_node_BST(root,d)
+
+
+
+root= Node(5)
+nodes=[Node(6),Node(3),Node(4),Node(8)]
+create_BST(root,nodes)
 inorder_tree_traversal(root)
 
 
