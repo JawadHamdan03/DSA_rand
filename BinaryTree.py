@@ -1,6 +1,5 @@
 from typing import List
 
-
 class Node :
     def __init__(self,val: int, right:Node=None, left:Node = None):
         self.val= val
@@ -23,7 +22,7 @@ def add_node_BST(root, node):
         else :
             add_node_BST(root.right,node)
 
-def create_BST(root , nodes):
+def create_BST(root, nodes):
     for node in nodes:
         add_node_BST(root,node)
 
@@ -34,7 +33,7 @@ def DFS_recursive(root):
     print(root.val)
     DFS_recursive(root.right)
 
-def DFS_itrative(root):
+def DFS_iterative(root):
     if not root:
         return
     stack =[root]
@@ -49,11 +48,9 @@ def DFS_itrative(root):
     print(*values)
 
 
-root= Node(5)
-nodes=[Node(6),Node(3),Node(4),Node(8),Node(2)]
-create_BST(root,nodes)
-DFS_recursive(root)
-DFS_itrative(root)
-
-
+tree= Node(5)
+my_nodes=[Node(6),Node(3),Node(4),Node(8),Node(2)]
+create_BST(tree,my_nodes)
+DFS_recursive(tree)
+DFS_iterative(tree)
 
