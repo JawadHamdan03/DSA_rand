@@ -116,12 +116,46 @@ def find_target_iterative(root:Node,target:int):
             queue.append(curr.left)
         if curr.right:
             queue.append(curr.right)
-
     return False
 
+##----------------------------- tree min value -------------------
+## DFS
+min_value =1000000000000
+def tree_min_recursive(root : Node):
+    if not root :
+        return
+    global min_value
+    min_value=min(root.val,min_value)
+    tree_min_recursive(root.left)
+    tree_min_recursive(root.right)
+    return min_value
+
+
+#BFS
+def tree_min_iterative(root:Node):
+    min_value=1000000000000
+    if not root :
+        return
+    queue= deque([root])
+
+    while queue:
+        length= len(queue)
+        curr = queue.popleft()
+        min_value=min(min_value,curr.val)
+
+        if curr.left:
+            queue.append(curr.left)
+        if curr.right:
+            queue.append(curr.right)
+
+    return min_value
+
+
+#------------------------------ Run Tests----------------
 tree= Node(5)
 my_nodes=[Node(6),Node(3),Node(4),Node(8),Node(2)]
 create_BST(tree,my_nodes)
+
 ##DFS_recursive(tree)
 ##DFS_iterative(tree)
 #BFS_iterative(tree)
@@ -129,7 +163,13 @@ create_BST(tree,my_nodes)
 #res2=sum_tree_BFS(tree)
 #print(res1)
 #print(res2)
-res=find_target_recursive(tree,9)
-res2=find_target_iterative(tree,9)
+
+#res=find_target_recursive(tree,9)
+#res2=find_target_iterative(tree,9)
+#print(res)
+#print(res2)
+
+res=tree_min_recursive(tree)
+res2=tree_min_iterative(tree)
 print(res)
 print(res2)
