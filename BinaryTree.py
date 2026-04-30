@@ -151,25 +151,56 @@ def tree_min_iterative(root:Node):
     return min_value
 
 
+## ---------------------max Root to leaf ---------------
+def max_root_leaf(root:Node,counter=1):
+    if not root:
+        return counter-1
+    return max(max_root_leaf(root.left,counter+1),max_root_leaf(root.right,counter+1))
+
+
+## --------------- max Sum from root to leaf-------
+
+def max_sum_root_leaf(root:Node,sum=0):
+    if not root :
+        return sum
+    return max(max_sum_root_leaf(root.right,sum+root.val),max_sum_root_leaf(root.left,sum+root.val))
+
+
 #------------------------------ Run Tests----------------
+
+# Construct Tree
 tree= Node(5)
-my_nodes=[Node(6),Node(3),Node(4),Node(8),Node(2)]
+my_nodes=[Node(6),Node(3),Node(4),Node(8),Node(2),Node(9),Node(10)]
 create_BST(tree,my_nodes)
 
+# Traversing DFS and BFS
 ##DFS_recursive(tree)
 ##DFS_iterative(tree)
 #BFS_iterative(tree)
+
+# Sum of tree
 #res1=sum_tree_DFS(tree)
 #res2=sum_tree_BFS(tree)
 #print(res1)
 #print(res2)
 
+# Find Target
 #res=find_target_recursive(tree,9)
 #res2=find_target_iterative(tree,9)
 #print(res)
 #print(res2)
 
-res=tree_min_recursive(tree)
-res2=tree_min_iterative(tree)
+# Tree min
+#res=tree_min_recursive(tree)
+#res2=tree_min_iterative(tree)
+#print(res)
+#print(res2)
+
+# max count root to leaf
+res=max_root_leaf(tree)
 print(res)
+
+
+# max sum from root to leaf
+res2= max_sum_root_leaf(tree)
 print(res2)
