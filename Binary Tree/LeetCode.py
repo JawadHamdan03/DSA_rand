@@ -26,3 +26,15 @@ def maxDepth(self, root: Optional[TreeNode]) -> int:
         
     return 1+ max(self.maxDepth(root.left),self.maxDepth(root.right))
         
+
+
+## 100. Same Tree
+def isSameTree(p:TreeNode, q: TreeNode) -> bool:
+    if not p and not q:
+        return True
+    if (not p and  q )or(p and not q) :
+        return False
+    if p.val != q.val:
+        return False
+        
+    return isSameTree(p.left,q.left) and isSameTree(p.right,q.right)
