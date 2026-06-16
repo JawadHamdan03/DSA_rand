@@ -2,7 +2,7 @@
 
 ## Fixed Sliding Window
 def maxSubArraySum(arr:list , k:int) -> int:
-    max_sum=0
+    max_sum=-10000000
     curr_sum=0
     for i in range(k):
         curr_sum+=arr[i]
@@ -17,6 +17,4 @@ def maxSubArraySum(arr:list , k:int) -> int:
     return max_sum
 
 
-
-
-print(maxSubArraySum([1,2,3,4,5,6,7],3))
+print(maxSubArraySum([4,2,1,-9,8,4,3],3))
