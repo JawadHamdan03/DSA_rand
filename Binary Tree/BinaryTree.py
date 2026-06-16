@@ -1,10 +1,10 @@
 from typing import List
 from collections import deque
 class Node :
-    def __init__(self,val: int, right:Node=None, left:Node = None):
+    def __init__(self,val: int):
         self.val= val
-        self.right=right
-        self.left=left
+        self.right=None
+        self.left=None
 
 def add_node_BST(root, node):
     if not root:
@@ -66,7 +66,7 @@ def BFS_iterative(root):
 
 
 #------------------------------- Sum all nodes in Tree --------------------
-def sum_tree_DFS(root:Node, sum=0):
+def sum_tree_DFS(root, sum=0):
     if not root :
         return sum
 
@@ -74,7 +74,7 @@ def sum_tree_DFS(root:Node, sum=0):
     return sum_tree_DFS(root.left,sum)+sum_tree_DFS(root.right)
 
 
-def sum_tree_BFS(root:Node):
+def sum_tree_BFS(root):
     if not root:
         return
     sum=0
@@ -94,7 +94,7 @@ def sum_tree_BFS(root:Node):
 
 # ----------------------------- find target in a tree --------
 ##DFS
-def find_target_recursive(root:Node,target:int):
+def find_target_recursive(root,target:int):
     if not root :
         return False
     if root.val==target:
@@ -121,7 +121,7 @@ def find_target_iterative(root:Node,target:int):
 ##----------------------------- tree min value -------------------
 ## DFS
 min_value =1000000000000
-def tree_min_recursive(root : Node):
+def tree_min_recursive(root ):
     if not root :
         return
     global min_value
@@ -152,7 +152,7 @@ def tree_min_iterative(root:Node):
 
 
 ## ---------------------max Root to leaf ---------------
-def max_root_leaf(root:Node,counter=1):
+def max_root_leaf(root,counter=1):
     if not root:
         return counter-1
     return max(max_root_leaf(root.left,counter+1),max_root_leaf(root.right,counter+1))
@@ -160,7 +160,7 @@ def max_root_leaf(root:Node,counter=1):
 
 ## --------------- max Sum from root to leaf-------
 
-def max_sum_root_leaf(root:Node,sum=0):
+def max_sum_root_leaf(root,sum=0):
     if not root :
         return sum
     return max(max_sum_root_leaf(root.right,sum+root.val),max_sum_root_leaf(root.left,sum+root.val))
