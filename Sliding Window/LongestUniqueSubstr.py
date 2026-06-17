@@ -4,6 +4,7 @@
 def longest_unique_substr(word : str):
     l=0
     st= dict()
+    longest=0
     for r in range(len(word)):
         if word[r] not in st:
             st[word[r]]=1
@@ -12,8 +13,8 @@ def longest_unique_substr(word : str):
             while st[word[r]] > 1:
                 st[word[l]]-=1
                 l+=1
-        
-    return len(st)
+        longest=max(longest,r-l+1)
+    return longest
 
 
 
